@@ -31,3 +31,7 @@ p {
     font-size: 15px;
     color: var(--secondary-text);
 }
+
+p a {
+    color: inherit;
+}
