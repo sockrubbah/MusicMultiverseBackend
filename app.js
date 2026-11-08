@@ -1,9 +1,22 @@
-var http = require("http");
+const { getSongs } = require("./server");
+const path = require("path");
+const express = require("express");
+const app = express();
+
 const port = process.env.PORT || 3001;
 
-http
-  .createServer(function (req, res) {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end("Hello World!");
-  })
-  .listen(port);
+app.get("/api/songs", async function (req, res) {
+    try {
+        const songs = await getSongs();
+        res.json(songs);
+    } catch (error) {
+        console.error("Could not load songs:", error);
+        res.status(500).send("Could not load songs");
+    }
+});
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
