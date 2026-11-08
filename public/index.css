@@ -1,14 +1,33 @@
+:root {
+    --page-background: #413663;
+    --surface-background: #121116;
+    --accent-color: #C3FF1A;
+    --primary-text: #F4F3F6;
+    --secondary-text: #8F8A98;
+    --dark-text: #0A090C;
+    --border-color: #2D2938;
+    --soft-surface: #1A1820;
+    --fade-background: #0B0A0F;
+}
+
 body {
+    margin: 0;
+    background: linear-gradient(105deg, var(--page-background), var(--fade-background) 70%);
+    background-repeat: no-repeat;
+    color: var(--primary-text);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-height: 100vh;
 }
 
 h1 {
     font-size: 24px;
     text-align: center;
+    color: var(--primary-text);
 }
 
 p {
     text-align: center;
     font-weight: bold;
     font-size: 15px;
+    color: var(--secondary-text);
 }

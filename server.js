@@ -44,7 +44,7 @@ const song = new Song({
     song_name: "Silver Soul",
     song_artist: "Echo Lake",
     song_genre: "Shoegaze / Dreampop",
-    song_picture: "images/silver-soul.svg",
+    song_picture: "/images/silver-soul.svg",
     song_of_the_day: false,
     song_description: "",
     post: {

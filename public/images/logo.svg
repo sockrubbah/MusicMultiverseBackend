@@ -1,0 +1,8 @@
+<svg width="304" height="34" viewBox="0 0 304 34" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logo-title">
+    <title id="logo-title">Music Multiverse</title>
+    <rect y="3" width="28" height="28" rx="6" fill="#C3FF1A"/>
+    <path d="M9.5 19.5a7 7 0 0 1 0-10M12 17a3.5 3.5 0 0 1 0-5M18.5 19.5a7 7 0 0 0 0-10M16 17a3.5 3.5 0 0 0 0-5" stroke="#0A090C" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="14" cy="14.5" r="1.8" fill="#0A090C"/>
+    <path d="M14 16.5 11.7 24M14 16.5l2.3 7.5M12.7 21h2.6" stroke="#0A090C" stroke-width="2" stroke-linecap="round"/>
+    <text x="40" y="23" fill="#F4F3F6" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" letter-spacing=".2">Music Multiverse</text>
+</svg>
