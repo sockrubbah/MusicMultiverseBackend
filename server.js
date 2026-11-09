@@ -182,10 +182,13 @@ const songs = [
 ];
 
 async function createSongs() {
-    await Song.deleteMany({});
-
-    const result = await Song.insertMany(songs);
-    console.log(`${result.length} songs inserted.`);
+    const count = await Song.countDocuments();
+    if (count === 0) {
+        const result = await Song.insertMany(songs);
+        console.log(`${result.length} songs inserted.`);
+    } else {
+        console.log("Songs already exist in the database. Skipping seed.");
+    }
 }
 
 async function getSongs() {
