@@ -1,30 +1,18 @@
 const { createSongs, getSongs } = require("./server");
 const path = require("path");
 const express = require("express");
-const cors = require("cors");
 const app = express();
 const fs = require("fs");
 const port = process.env.PORT || 3001;
 
-app.use(cors());
-app.use(express.json());
-app.get("/api/songs", function (req, res) {
-    const staticSongs = [
-        {
-            _id: "1",
-            song_name: "Test Track Alpha",
-            artist: "Digger 99",
-            comments: [{ _id: "c1", username: "acid_jerk", text: "Heavy bassline!" }]
-        },
-        {
-            _id: "2",
-            song_name: "Ambient Submarine",
-            artist: "Shoegazer",
-            comments: []
-        }
-    ];
-
-    res.json(staticSongs);
+app.get("/api/songs", async function (req, res) {
+    try {
+        const songs = await getSongs();
+        res.json(songs);
+    } catch (error) {
+        console.error("Could not load songs:", error);
+        res.status(500).send("Could not load songs");
+    }
 });
 
 app.use(express.static(path.join(__dirname, "public")));
