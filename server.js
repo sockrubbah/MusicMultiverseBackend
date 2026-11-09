@@ -36,24 +36,6 @@ const Song = mongoose.model("Song", schema);
 
 const songs = [
     {
-        song_name: "This is a Test Song",
-        song_artist: "Test Songer",
-        song_genre: "Rock",
-        song_picture: "images/violin.svg",
-        song_of_the_day: false,
-        song_description: "",
-        post: {
-            username: "",
-            user_picture: "",
-            time: "",
-            text: "",
-            likes: 0,
-            comment_count: 0,
-            reposts: 0
-        },
-        comments: []
-    },
-    {
         song_name: "Silver Soul",
         song_artist: "Echo Lake",
         song_genre: "Shoegaze / Dreampop",
@@ -200,13 +182,10 @@ const songs = [
 ];
 
 async function createSongs() {
-    const count = await Song.countDocuments();
-    if (count === 0) {
-        const result = await Song.insertMany(songs);
-        console.log(`${result.length} songs inserted.`);
-    } else {
-        console.log("Songs already exist in the database. Skipping seed.");
-    }
+    await Song.deleteMany({});
+
+    const result = await Song.insertMany(songs);
+    console.log(`${result.length} songs inserted.`);
 }
 
 async function getSongs() {

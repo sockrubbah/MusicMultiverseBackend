@@ -9,6 +9,8 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+createSongs().catch(console.error);
+
 app.get("/api/songs", async function (req, res) {
     try {
         const songs = await getSongs();
