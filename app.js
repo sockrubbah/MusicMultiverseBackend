@@ -1,10 +1,13 @@
 const { createSongs, getSongs } = require("./server");
 const path = require("path");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const fs = require("fs");
 const port = process.env.PORT || 3001;
 
+app.use(cors());
+app.use(express.json());
 app.get("/api/songs", async function (req, res) {
     try {
         const songs = await getSongs();
