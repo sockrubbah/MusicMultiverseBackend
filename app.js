@@ -1,11 +1,11 @@
-const { createSong, getSongs } = require("./server");
+const { createSongs, getSongs } = require("./server");
 const path = require("path");
 const express = require("express");
 const app = express();
 const fs = require("fs");
 const port = process.env.PORT || 3001;
 
-createSong().catch(console.error);
+createSongs().catch(console.error);
 
 app.get("/api/songs", async function (req, res) {
     try {
