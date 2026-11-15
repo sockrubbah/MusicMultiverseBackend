@@ -208,7 +208,9 @@ async function addSong(data) {
         spotify_url: data.spotify_url,
         descriptors: data.descriptors,
         post: {
-            username: "@anonymous",
+            username: data.username
+                ? `@${data.username.replace(/^@/, "")}`
+                : "@anonymous",
             user_picture: "",
             time: new Date().toISOString(),
             text: data.description,

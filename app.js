@@ -12,8 +12,17 @@ app.use(express.json());
 createSongs().catch(console.error);
 
 const submissionSchema = Joi.object({
-    title: Joi.string().trim().max(200).required(),
+    username: Joi.string()
+    .trim()
+    .pattern(/^@?[a-zA-Z0-9_]{1,30}$/)
+    .allow("")
+    .default("")
+    .messages({
+        "string.pattern.base":
+            "Username can contain 1–30 letters, numbers, or underscores, with an optional @ at the start."
+    }),
 
+    title: Joi.string().trim().max(200).required(),
     artist: Joi.string().trim().max(200).allow("").default(""),
 
     spotify_url: Joi.string()
