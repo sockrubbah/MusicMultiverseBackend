@@ -1,10 +1,9 @@
-const { createSongs, getSongs } = require("./server");
+const { createSongs, getSongs, addSong } = require("./server");
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const app = express();
 const Joi = require("joi");
-const { createSongs, getSongs, addSong } = require("./server");
 const port = process.env.PORT || 3001;
 
 app.use(cors());
