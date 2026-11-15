@@ -13,6 +13,8 @@ const schema = new mongoose.Schema({
     song_picture: String,
     song_of_the_day: Boolean,
     song_description: String,
+    spotify_url: String,
+    descriptors: [String],
     post: {
         username: String,
         user_picture: String,
@@ -195,4 +197,29 @@ async function getSongs() {
     return await Song.find();
 }
 
-module.exports = { createSongs, getSongs };
+async function addSong(data) {
+    const song = new Song({
+        song_name: data.title,
+        song_artist: data.artist,
+        song_genre: data.genres.join(" / "),
+        song_picture: "",
+        song_of_the_day: false,
+        song_description: data.description,
+        spotify_url: data.spotify_url,
+        descriptors: data.descriptors,
+        post: {
+            username: "@anonymous",
+            user_picture: "",
+            time: new Date().toISOString(),
+            text: data.description,
+            likes: 0,
+            comment_count: 0,
+            reposts: 0
+        },
+        comments: []
+    });
+
+    return await song.save();
+}
+
+module.exports = { createSongs, getSongs, addSong };
